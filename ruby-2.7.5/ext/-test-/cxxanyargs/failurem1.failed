@@ -1,0 +1,82 @@
+make[3]: Entering directory '/home/usuario/Documents/taller2023/duo-main/ruby-2.7.5/ext/-test-/cxxanyargs'
+compiling failurem1.cpp
+In file included from failurem1.cpp:1:
+failurem1.cpp: In function ‘void Init_failure()’:
+../../.././include/ruby/ruby.h:2779:78: error: no matching function for call to ‘define(VALUE&, const char [6], VALUE (&)(int, VALUE*, VALUE))’
+ 2779 | #define rb_define_method(m, n, f, a) rb_define_method_tmpl<a>::define(m, n, f)
+      |                                                                              ^
+failurem1.cpp:12:5: note: in expansion of macro ‘rb_define_method’
+   12 |     rb_define_method(rb_cObject, "argm1", func_argm1, 0);
+      |     ^~~~~~~~~~~~~~~~
+In file included from ../../.././include/ruby/ruby.h:2150,
+                 from failurem1.cpp:1:
+../../.././include/ruby/intern.h:1061:21: note: candidate: ‘static void rb_define_method_tmpl<0>::define(VALUE, const char*, VALUE (*)(VALUE))’ <near match>
+ 1061 |         static void define(RB_UNWRAP_MACRO decl, VALUE (*func)funcargs) {::defname(RB_UNWRAP_MACRO vars, func, arity);} \
+      |                     ^~~~~~
+../../.././include/ruby/intern.h:1070:5: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_CXX’
+ 1070 |     RB_METHOD_DEFINITION_DECL_CXX(def,defname,decl,vars,funcargs,arity)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1074:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_1’
+ 1074 | RB_METHOD_DEFINITION_DECL_1(def,nonnull,def##0 ,0 ,decl,vars,(VALUE)) \
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/ruby.h:2777:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL’
+ 2777 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1061:21: note:   conversion of argument 3 would be ill-formed:
+ 1061 |         static void define(RB_UNWRAP_MACRO decl, VALUE (*func)funcargs) {::defname(RB_UNWRAP_MACRO vars, func, arity);} \
+      |                     ^~~~~~
+../../.././include/ruby/intern.h:1070:5: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_CXX’
+ 1070 |     RB_METHOD_DEFINITION_DECL_CXX(def,defname,decl,vars,funcargs,arity)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1074:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_1’
+ 1074 | RB_METHOD_DEFINITION_DECL_1(def,nonnull,def##0 ,0 ,decl,vars,(VALUE)) \
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/ruby.h:2777:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL’
+ 2777 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from failurem1.cpp:1:
+failurem1.cpp:12:43: error: invalid conversion from ‘VALUE (*)(int, VALUE*, VALUE)’ {aka ‘long unsigned int (*)(int, long unsigned int*, long unsigned int)’} to ‘VALUE (*)(VALUE)’ {aka ‘long unsigned int (*)(long unsigned int)’} [-fpermissive]
+   12 |     rb_define_method(rb_cObject, "argm1", func_argm1, 0);
+      |                                           ^~~~~~~~~~
+      |                                           |
+      |                                           VALUE (*)(int, VALUE*, VALUE) {aka long unsigned int (*)(int, long unsigned int*, long unsigned int)}
+../../.././include/ruby/ruby.h:2779:77: note: in definition of macro ‘rb_define_method’
+ 2779 | #define rb_define_method(m, n, f, a) rb_define_method_tmpl<a>::define(m, n, f)
+      |                                                                             ^
+In file included from ../../.././include/ruby/ruby.h:2150,
+                 from failurem1.cpp:1:
+../../.././include/ruby/intern.h:1062:21: note: candidate: ‘static void rb_define_method_tmpl<0>::define(VALUE, const char*, VALUE (*)(...))’ <near match>
+ 1062 |         static void define(RB_UNWRAP_MACRO decl, VALUE (*func)(...)) {::defname(RB_UNWRAP_MACRO vars, reinterpret_cast<VALUE(*)funcargs>(func), arity);} \
+      |                     ^~~~~~
+../../.././include/ruby/intern.h:1070:5: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_CXX’
+ 1070 |     RB_METHOD_DEFINITION_DECL_CXX(def,defname,decl,vars,funcargs,arity)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1074:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_1’
+ 1074 | RB_METHOD_DEFINITION_DECL_1(def,nonnull,def##0 ,0 ,decl,vars,(VALUE)) \
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/ruby.h:2777:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL’
+ 2777 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1062:21: note:   conversion of argument 3 would be ill-formed:
+ 1062 |         static void define(RB_UNWRAP_MACRO decl, VALUE (*func)(...)) {::defname(RB_UNWRAP_MACRO vars, reinterpret_cast<VALUE(*)funcargs>(func), arity);} \
+      |                     ^~~~~~
+../../.././include/ruby/intern.h:1070:5: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_CXX’
+ 1070 |     RB_METHOD_DEFINITION_DECL_CXX(def,defname,decl,vars,funcargs,arity)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/intern.h:1074:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_1’
+ 1074 | RB_METHOD_DEFINITION_DECL_1(def,nonnull,def##0 ,0 ,decl,vars,(VALUE)) \
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../.././include/ruby/ruby.h:2777:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL’
+ 2777 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from failurem1.cpp:1:
+failurem1.cpp:12:43: error: invalid conversion from ‘VALUE (*)(int, VALUE*, VALUE)’ {aka ‘long unsigned int (*)(int, long unsigned int*, long unsigned int)’} to ‘VALUE (*)(...)’ {aka ‘long unsigned int (*)(...)’} [-fpermissive]
+   12 |     rb_define_method(rb_cObject, "argm1", func_argm1, 0);
+      |                                           ^~~~~~~~~~
+      |                                           |
+      |                                           VALUE (*)(int, VALUE*, VALUE) {aka long unsigned int (*)(int, long unsigned int*, long unsigned int)}
+../../.././include/ruby/ruby.h:2779:77: note: in definition of macro ‘rb_define_method’
+ 2779 | #define rb_define_method(m, n, f, a) rb_define_method_tmpl<a>::define(m, n, f)
+      |                                                                             ^
+make[3]: [Makefile:244: failurem1.o] Error 1 (ignored)
+make[3]: Leaving directory '/home/usuario/Documents/taller2023/duo-main/ruby-2.7.5/ext/-test-/cxxanyargs'

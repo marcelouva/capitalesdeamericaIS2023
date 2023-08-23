@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario - Juego</title>
+    <style>
+    body {
+      background-color: #f7dc6f;
+      font-family: 'Luckiest Guy', cursive;
+    }
+    h1 {
+      font-size: 4em;
+      text-align: center;
+      margin-top: 50px;
+    }
+    form {
+      margin: 50px auto;
+      text-align: center;
+    }
+    input[type="text"], input[type="password"] {
+      font-size: 1.5em;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px;
+      width: 250px;
+    }
+    input[type="submit"] {
+      background-color: #7fb3d5;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.5em;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    input[type="submit"]:hover {
+      background-color: #1c5d99;
+    }
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .signup-link {
+      color: #1c5d99;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+
+  </head>
+  <body>
+    <h1>Inscribite !!" </h1>
+    <form action="/signup" method="post">
+      <input type="text" name="name" placeholder="Nombre de Usuario" required>
+      <br>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <br>
+      <input type="submit" value="Registrarse">
+    </form>
+    
+
+  </body>
+</html>

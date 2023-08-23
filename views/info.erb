@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Información</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dBdY/HFYvHTh1VjiJN6s5HShOzYxhcjhuIzV3Xt/xNpNhWQ3x0wtbUmU+o+n1i1Z+aB3jrdOvrKZ4u5KNH9aYQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: #f2f3f5;
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      text-align: center;
+      margin-top: 100px;
+      padding: 20px;
+      border: 1px solid #dce0e4;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background-color: #fff;
+      max-width: 500px;
+      margin: auto;
+    }
+    .icon {
+      font-size: 48px;
+      color: #1877f2;
+      margin-bottom: 20px;
+    }
+    .message {
+      font-size: 24px;
+      color: #1c1e21;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1877f2;
+      text-decoration: none;
+      border-bottom: 2px solid #1877f2;
+      padding-bottom: 2px;
+    }
+    .link:hover {
+      color: #1c1e21;
+      border-bottom-color: #1c1e21;
+    }
+  </style>
+
+
+<script>
+function goBack() {
+  window.location.href = document.referrer;
+}
+</script>
+</head>
+<body>
+  <div class="container">
+    <i class="fas fa-info-circle icon"></i>
+    <p class="message"><%= @message %></p>
+    <a href="#" class="link" onclick="goBack()">Volver</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .image-zoom-container {
+      width: 600px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-zoom-container img {
+      width: 100%;
+      height: auto;
+      transform: scale(1);
+      transition: transform 4s ease;
+      transform-origin: 10% 80%; /* Establece el punto de origen en el centro de la imagen */
+
+    }
+  </style>
+</head>
+<body>
+  <div class="image-zoom-container">
+  
+    <img src="/images/americapolitico2.jpeg?<%= Time.now.to_i %>"" alt="Imagen" id="zoom-image">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const zoomImage = document.querySelector('#zoom-image');
+
+      zoomImage.addEventListener('load', function() {
+        zoomImage.style.transform = 'scale(1.5)';
+      });
+    });
+
+
+
+
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Alta de Usuario - Juego</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9d9e2;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .form {
+      background-color: #1e2019;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 40px;
+      width: 400px;
+    }
+
+    .form h1 {
+      color: #f9d9e2;
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 0 #1e2019;
+    }
+
+    .form label {
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 0 #1e2019;
+    }
+
+    .form input[type="text"],
+    .form input[type="password"] {
+      background-color: #f9d9e2;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .form input[type="submit"] {
+      background-color: #f05d5e;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+      color: #ffffff;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2em;
+      margin-top: 20px;
+      padding: 10px;
+      transition: background-color 0.2s ease;
+      width: 100%;
+    }
+
+    .form input[type="submit"]:hover {
+      background-color: #e04142;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <h1>Alta de Usuario</h1>
+      <form action="/users" method="post">
+        <label for="name">Nombre de Usuario:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Crear Cuenta">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

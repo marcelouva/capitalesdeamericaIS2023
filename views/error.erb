@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Error</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dBdY/HFYvHTh1VjiJN6s5HShOzYxhcjhuIzV3Xt/xNpNhWQ3x0wtbUmU+o+n1i1Z+aB3jrdOvrKZ4u5KNH9aYQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-top: 100px;
+      font-size: 48px;
+    }
+    .message {
+      display: block;
+      color: #2c3e50;
+      font-size: 36px;
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      border: 5px solid #2c3e50;
+      border-radius: 10px;
+    }
+    .red {
+      color: #e74c3c;
+    }
+    .orange {
+      color: #f39c12;
+    }
+    .yellow {
+      color: #f1c40f;
+    }
+    .green {
+      color: #2ecc71;
+    }
+    .blue {
+      color: #3498db;
+    }
+    .purple {
+      color: #9b59b6;
+    }
+    .icon {
+      font-size: 80px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .return {
+      display: block;
+      text-align: center;
+      margin-top: 50px;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+    .return a {
+      color: #2c3e50;
+      text-decoration: none;
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+    .return a:hover {
+      color: #3498db;
+      border-bottom-color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <h1><i class="fas fa-hammer icon"></i>Error</h1>
+  <% if @error_message %>
+    <span class="message"><span class="red"><%= @error_message[0..2] %></span><span class="orange"><%= @error_message[3..4] %></span><span class="yellow"><%= @error_message[5..7] %></span><span class="green"><%= @error_message[8..10] %></span><span class="blue"><%= @error_message[11..13] %></span><span class="purple"><%= @error_message[14..-1] %></span></span>
+  <% else %>
+    <p>¡Ups! Algo salió mal.</p>
+  <% end %>
+  <span class="return"><a href="/">Regresar</a></span>

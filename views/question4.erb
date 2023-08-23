@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trivia</title>
+  <meta charset="utf-8">
+  <!-- Incluir los archivos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+  p {
+    color: orange;
+    font-size: 40px;
+  }
+</style>
+
+
+  <style>
+
+    body {
+      background-image: url("/images/america.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .question-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      color: green;
+      font-size: 30px;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .option-label {
+      width: 200px;
+      padding: 10px;
+      background-color: #f1f1f2;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+
+    .option-label.active {
+      background-color: #007bff;
+      color: green;
+    }
+
+    #responder-btn {
+      transition: transform 0.6s ease-in-out;
+    }
+
+    #responder-btn:hover {
+      transform: scale(1.2);
+    }
+
+ #nextbtn {
+  transition: transform 0.6s ease-in-out;
+}
+
+#nextbtn:hover {
+  transform: scale(1.2);
+}
+
+    
+
+    .n-container {
+    color:black;
+    display: flex;
+    flex-direction: row;
+    height: 80 %;
+    width:80%;
+    align:center;
+    border: solid 2px blue;
+    border-radius: 10px;
+    
+   margin: 10%  auto
+   font-size: 24px;
+
+  }
+  .img-ampliada {
+    width: 100%;
+  }
+  
+  .container {
+    display: flex;
+    
+  }
+
+  .options-container {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .image-container {
+    flex: 1;
+    padding: 50px;
+  }
+
+  .image-zoom-container {
+    width: 600px;
+    height: 500px;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .image-zoom-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(3);
+    transition: transform 5s ease;
+    transform-origin: <%= "#{@x}% #{@y}%" %>; /* Utiliza las variables pasadas desde la vista */
+  }
+  
+  .image-zoom-container:hover img {
+    transform: scale(1);
+  }
+  En este caso, hemos añadido la propiedad object-fit: contain; al estilo del elemento img. Esta propiedad indica que la imagen debe ajustarse dentro del contenedor sin modificar su relación de aspecto original. Al utilizar object-fit: contain;, la imagen se achicará para encajar dentro del contenedor sin distorsionarse ni modificar las dimensiones del contenedor.
+  
+  Con esta modificación, cuando se realiza la animación de zoom y se coloca el ratón sobre el contenedor, la imagen se achicará para ajustarse al contenedor sin modificar las dimensiones del contenedor en sí. Asegúrate de aplicar los estilos CSS a tu código HTML correspondiente para que surtan efecto.
+  
+  
+  
+  
+  
+  
+  
+
+
+
+  
+
+
+  
+
+  </style>
+</head>
+<body>
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<br>
+<h1 class="text-center" style="font-size: 50px; color: yellow;">Capitales de Argentina</h1>
+
+<br>
+
+<!-- Contenedor principal -->
+<div class="container"     margin-top= 1px;>
+  <div class="row">
+    <!-- Card 1 -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">¿ Cuál es la capital de <%= @pregunta %> ?</h5>
+          <div class="options-container">
+       <form id="respuesta-form" method="post" action="/respuesta">
+    <input type="hidden" name="pregunta" value="<%= @pregunta %>">
+    <input type="hidden" name="q_id" value="<%= @q_id %>">
+    <input type="hidden" name="u_id" value="<%= @user_id %>">
+    <% @opciones.shuffle.each do |opcion| %>
+      <label class="option-label">
+        <input type="radio" name="opcion" value="<%= opcion %>">
+        <%= opcion %>
+      </label>
+    <% end %>
+ 
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary" style="width: 150px;" id="responder-btn" disabled>Responder</button>
+    </div>
+</form>
+
+<br>
+
+<form id="respuesta-form" method="get" action="/pregunta">
+  <div class="text-center">
+  <button type="submit" class="btn btn-primary" style="width: 150px;" id="nextbtn" enabled>Siguiente</button>
+   </div>
+</form>
+
+  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6">
+      <div class="card">
+
+
+
+      <div class="image-zoom-container">
+  
+      <img src="/images/argentina.jpg?<%= Time.now.to_i %>"" alt="Imagen" id="zoom-image"  style="max-width: auto%; height:auto% ;">
+    </div>
+  
+              
+
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Incluir los scripts de Bootstrap (preferiblemente antes de cerrar el body) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+
+<div class="container" style="font-size: 50px; color: yellow;">
+    <% if session[:user_name] %>
+
+    <p class="container" style="font-size: 34px;">
+              Usuario: <%= session[:user_name] %>   Puntos: <%= session[:points] %>
+      </p>
+  </div>    
+  <% end %>
+
+
+
+  <div class="container"     margin-top= 1px;>
+
+
+
+
+
+
+<script>
+const opciones = document.querySelectorAll('input[type="radio"][name="opcion"]');
+const responderBtn = document.getElementById('responder-btn');
+const nextBtn = document.getElementById('nextbtn');
+nextBtn.disabled = false;
+
+responderBtn.addEventListener('click', function() {
+  window.location.href = "/respuesta";
+});
+;
+
+opciones.forEach(opcion => {
+  opcion.addEventListener('change', () => {
+    if (document.querySelector('input[type="radio"][name="opcion"]:checked')) {
+      responderBtn.disabled = false;
+    } else {
+      responderBtn.disabled = true;
+    }
+  });
+});
+
+
+  
+
+
+</script>
+
+</div>
+<!-- Incluir los archivos JavaScript de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+

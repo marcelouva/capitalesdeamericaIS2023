@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trivia Game</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome <%= @user_name %>!</h1>
+    <button class="btn btn-primary" id="show-question">Show Question</button>
+    <div class="card mt-3" id="question-panel" style="display: none;">
+      <div class="card-body">
+        <h2 class="card-title" id="question-title"></h2>
+        <p class="card-text" id="question-text"></p>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#show-question").click(function() {
+        var title = "What is the capital of France?";
+        var text = "Select one of the following options: A) London B) Paris C) Berlin";
+        $("#question-title").text(title);
+        $("#question-text").text(text);
+        $("#question-panel").show();
+      });
+    });
+  </script>
+</body>
+</html>
