@@ -1,14 +1,18 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
+  before_create :set_default_score
+
   validates :name, presence: true
-  validates :password, presence: true
+  validates :password_digest, presence: true
 
   has_many :answers
   has_many :cars  
   has_secure_password
 
-
-
+  private
+  def set_default_score
+    self.score = 0
+  end
 
 
   def mayor21?
@@ -31,6 +35,10 @@ class User < ActiveRecord::Base
     end       
 
   end
+
+  
+
+
 
 end
 

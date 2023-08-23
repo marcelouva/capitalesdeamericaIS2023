@@ -63,9 +63,7 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    
-
-    erb :login_user
+     erb :login_user
  end
 
 
@@ -132,8 +130,35 @@ class App < Sinatra::Application
     session.clear
     redirect '/'
   end
+  get '/pregunta1' do
+  if session[:user_id]
+       @user_name = session[:user_name]
+       @user_id = session[:user_id]
+       @points = session[:points]
+    #info.logger(session[:user_id].to_string)
+       
+       i = rand(1..Question.count)
+       p=Question.find(i)
+       
 
-  
+
+       @pregunta = p.name
+       @q_id=p.question_id.to_s
+   #Buscar las opciones
+       option_list=[]
+       p.options.each do |e|
+    option_list.append(e.name)
+        end   
+   @opciones = option_list
+   @x=p.posx
+   @y=p.posy
+   
+   erb :question5
+   else
+     @message = "No estás logeado."
+     erb :info
+   end
+  end  
 
   get '/pregunta' do
     if session[:user_id]
@@ -143,20 +168,7 @@ class App < Sinatra::Application
     #info.logger(session[:user_id].to_string)
        
     
-    #buscar la pregunta
-      preguntas_no_realizadas = request.cookies['progress'].split(",").map(&:to_i)
-      preguntas_no_realizadas.shuffle
-      i=1
-
-
-      unless preguntas_no_realizadas.empty?
-           i=preguntas_no_realizadas.first
-           preguntas_no_realizadas.shift
-           progress = preguntas_no_realizadas.join(',') 
-           response.set_cookie(:progress, value: progress)
-      end 
-    #seguir
-       #i = rand(1..Question.count)
+  i = rand(1..Question.count)
        p=Question.find(i)
 
 
@@ -210,7 +222,15 @@ class App < Sinatra::Application
 
       if o_id==q.option_id
         session[:points]=session[:points]+1
-        logger.info("respondiste bien!")
+        user = User.find(u_id)
+        logger.info(">>>>>>>"+"#{u_id}"+"<<<<<<")    
+
+        puntaje = user.score
+        puntaje += 1 
+        user.score = puntaje
+        user.save
+
+        logger.info(u_id)
         # @message = "Cooooorrecto!! - Respuesta registrada OK."
          erb :correcto   
       else
@@ -244,7 +264,7 @@ class App < Sinatra::Application
       # El usuario ha iniciado sesión correctamente
       session[:user_id] = user.id
       session[:user_name] = user.name
-      session[:points] = 0
+      session[:points] = user.score
       #@message = "Login ok."
       #erb :info
       redirect '/pregunta'
