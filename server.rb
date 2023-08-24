@@ -130,36 +130,7 @@ class App < Sinatra::Application
     session.clear
     redirect '/'
   end
-  get '/pregunta1' do
-  if session[:user_id]
-       @user_name = session[:user_name]
-       @user_id = session[:user_id]
-       @points = session[:points]
-    #info.logger(session[:user_id].to_string)
-       
-       i = rand(1..Question.count)
-       p=Question.find(i)
-       
-
-
-       @pregunta = p.name
-       @q_id=p.question_id.to_s
-   #Buscar las opciones
-       option_list=[]
-       p.options.each do |e|
-    option_list.append(e.name)
-        end   
-   @opciones = option_list
-   @x=p.posx
-   @y=p.posy
-   
-   erb :question5
-   else
-     @message = "No estás logeado."
-     erb :info
-   end
-  end  
-
+  
   get '/pregunta' do
     if session[:user_id]
        @user_name = session[:user_name]
