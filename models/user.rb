@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     self.score = 0
   end
 
-
+  public
   def mayor21?
        fecha_nacimiento = self.fecha_nacimiento
 
