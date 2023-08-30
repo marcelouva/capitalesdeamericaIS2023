@@ -55,7 +55,11 @@ describe 'User' do
         expect(u.valid?).to eq(true)
       end
 
-
+      it 'se busca un valor ' do
+          u = User.find_by(id: 9090)
+          expect(u).to_not be_nil
+          expect(u.valid?).to eq(true)
+      end
 
     end
   end
