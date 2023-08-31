@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'sinatra/contrib'
 
-
+require_relative 'models/person'
 require_relative 'models/user'
 require_relative 'models/car'
 require_relative 'models/question'
