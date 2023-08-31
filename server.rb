@@ -64,7 +64,7 @@ class App < Sinatra::Application
 
   get '/' do
      erb :login_user
- end
+  end
 
 
 

@@ -2,7 +2,7 @@ ruby '2.7.5'
 
 source "https://rubygems.org"
 gem 'multi_json'
-gem 'simplecov', require: false
+
 
 
 github 'sinatra/sinatra' do
