@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-31T12:42:14+00:00">2023-08-31T12:42:14+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-09-01T13:50:37+00:00">2023-09-01T13:50:37+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  62.03%
+  62.5%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.73
+         0.74
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>237</b> relevant lines,
-    <span class="green"><b>147</b> lines covered</span> and
+    <b>240</b> relevant lines,
+    <span class="green"><b>150</b> lines covered</span> and
     <span class="red"><b>90</b> lines missed. </span>
     (<span class="red">
-  62.03%
+  62.5%
 </span>
 )
   </div>
@@ -194,9 +194,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#94e14327a6b3934abd2345c99f54942d916ccfd9" class="src_link" title="spec/app_spec.rb">spec/app_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">8</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">11</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -4512,8 +4512,8 @@
     
 
     <div class="t-line-summary">
-      <b>8</b> relevant lines.
-      <span class="green"><b>8</b> lines covered</span> and
+      <b>11</b> relevant lines.
+      <span class="green"><b>11</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -4608,7 +4608,7 @@
 
             
 
-            <code class="ruby">    # Aquí debes proporcionar una referencia a tu aplicación Sinatra</code>
+            <code class="ruby">    # incluir el nombre de la clase correspondiente a la Application definida en el server.rb</code>
           </li>
         </div>
       
@@ -4619,7 +4619,7 @@
 
             
 
-            <code class="ruby">    # Por ejemplo, si tu clase de aplicación se llama &#39;App&#39;, puedes hacerlo así:</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -4663,7 +4663,7 @@
 
             
 
-            <code class="ruby">  it &#39;displays the homepage&#39; do</code>
+            <code class="ruby">  it &#39;probando rutas del server&#39; do</code>
           </li>
         </div>
       
@@ -4674,7 +4674,7 @@
 
             
 
-            <code class="ruby">    get &#39;/signup&#39; # Accede a la ruta &#39;/signup&#39; definida en tu aplicación</code>
+            <code class="ruby">    get &#39;/signup&#39; # Accede a la ruta &#39;/signup&#39; </code>
           </li>
         </div>
       
@@ -4690,7 +4690,51 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(last_response).to be_ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="17">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(last_response.headers[&quot;Content-Type&quot;]).to include(&quot;text/html&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">    #expect(last_response).to redirect_to(&quot;/otra_ruta&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(last_response.body).to include(&quot;Inscribite&quot;)# Verifica que la página que responde contenga ese texto</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
@@ -4701,7 +4745,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 

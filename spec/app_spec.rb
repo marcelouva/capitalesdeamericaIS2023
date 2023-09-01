@@ -5,13 +5,17 @@ RSpec.describe 'Sinatra App' do
   include Rack::Test::Methods
 
   def app
-    # Aquí debes proporcionar una referencia a tu aplicación Sinatra
-    # Por ejemplo, si tu clase de aplicación se llama 'App', puedes hacerlo así:
+    # incluir el nombre de la clase correspondiente a la Application definida en el server.rb
+    
     App
   end
 
-  it 'displays the homepage' do
-    get '/signup' # Accede a la ruta '/signup' definida en tu aplicación
+  it 'probando rutas del server' do
+    get '/signup' # Accede a la ruta '/signup' 
     expect(last_response.status).to eq(200) # Verifica el código de respuesta HTTP
+    expect(last_response).to be_ok
+    expect(last_response.headers["Content-Type"]).to include("text/html")
+    #expect(last_response).to redirect_to("/otra_ruta")
+    expect(last_response.body).to include("Inscribite")# Verifica que la página que responde contenga ese texto
   end
 end
