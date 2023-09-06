@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_create :set_default_score
 
   validates :name, presence: true
-  validates :password_digest, presence: true
+  #validates :password, presence: true
 
   has_many :answers
   has_many :cars  

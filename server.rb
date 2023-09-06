@@ -15,6 +15,7 @@ require_relative 'models/question_options'
 require_relative 'models/answer'
 require_relative 'lib/utils'
 
+require_relative 'controllers/authentication_controller'
 
 
 
@@ -22,6 +23,7 @@ require_relative 'lib/utils'
 
 class App < Sinatra::Application
   use Rack::Session::Cookie, secret: "patagonia some_secret_key"
+  use AuthenticationController
 
   def initialize(app = nil)
     super()
@@ -51,52 +53,10 @@ class App < Sinatra::Application
 # Filtro global para verificar la sesión del usuario en todas las rutas
 
   before do
-    unless ['/', '/login','/signup'].include?(request.path_info) || session[:user_name]
+    unless ['/', '/logout','/login','/signup'].include?(request.path_info) || session[:user_name]
       redirect '/'
     end
   end
-  
-
-
-  get '/signup' do
-    erb :new_user3
-  end
-
-  get '/' do
-     erb :login_user
-  end
-
-
-
-
-
-  post '/signup' do
-    user = User.new(name: params[:name], password: params[:password])
-    user.save
-    @message = "Inserción ok."
-    session[:user_id] = user.id
-    session[:user_name] = user.name
-
-    
-    #estoy creando una cookie en el browser para almacenar el progreso del jugador
-    # la idea es almacenar un string con la lista de preguntas que no se han respondido 
-    unless  request.cookies.key?('progress')
-     # progress = request.cookies['progress']
-     # "Valor de la cookie 'progress': #{progress}"
-    #else
-
-     question_ids = Question.pluck(:question_id)
-      progress = question_ids.join(',') # Generar una lista del 1 al 10 como una cadena separada por comas
-      response.set_cookie(:progress, value: progress)
-      logger.info("La cookie 'progress' ha sido generada con valor inicial: #{progress}")
-    end
-
-
-
-    erb :info
-
-   end
-
 
   post '/users' do
   user = User.new(name: params[:name], password: params[:password])
@@ -126,11 +86,7 @@ class App < Sinatra::Application
     end
   end
 
-  get '/logout' do
-    session.clear
-    redirect '/'
-  end
-  
+   
   get '/pregunta' do
     if session[:user_id]
        @user_name = session[:user_name]
@@ -155,7 +111,7 @@ class App < Sinatra::Application
    @x=p.posx
    @y=p.posy
    
-   erb :question5
+   erb :question6
    else
      @message = "No estás logeado."
      erb :info
@@ -163,6 +119,33 @@ class App < Sinatra::Application
    
    
  end
+
+
+ post '/login1' do
+#  name_value = params[:name]
+#  user = User.find_by(name: params[:name])
+#  result = user.authenticate(params[:password])
+#  
+#if result
+#       "La autenticación fue exitosa"
+#     else
+#        "La autenticación falló"
+#     end
+#
+  #"El valor de 'napassme' es #{user.authenticate(params[:password])}"        
+
+# if user && user.authenticate(params[:password])
+#    # El usuario ha iniciado sesión correctamente
+#   session[:user_id] = user.id
+#   session[:user_name] = user.name
+#   session[:points] = user.score
+#   redirect '/pregunta'
+# else
+#   @error_message = 'No se encuentra al usuario'
+#    erb :error
+#  end
+end
+
 
 
   post '/respuesta' do
@@ -195,10 +178,12 @@ class App < Sinatra::Application
         session[:points]=session[:points]+1
         user = User.find(u_id)
         logger.info(">>>>>>>"+"#{u_id}"+"<<<<<<")    
-
+        logger.info("sumo a score "+"#{user.score}"+"<<<<<<")    
         puntaje = user.score
         puntaje += 1 
         user.score = puntaje
+        logger.info("sumo a score "+"#{user.score}"+"<--------")    
+
         user.save
 
         logger.info(u_id)
@@ -222,32 +207,6 @@ class App < Sinatra::Application
   
 
 
-
-
-
-
-
-  post '/login' do
-    user = User.find_by(name: params[:name])
-    
-    
-    if user && user.authenticate(params[:password])
-      # El usuario ha iniciado sesión correctamente
-      session[:user_id] = user.id
-      session[:user_name] = user.name
-      session[:points] = user.score
-      #@message = "Login ok."
-      #erb :info
-      redirect '/pregunta'
-      #redirect '/dashboard'
-    else
-      # La combinación de nombre de usuario y contraseña es incorrecta
-      #redirect '/login'
-      @error_message = 'No se encuentra al usuario'
-      
-      erb :error
-    end
-  end
 
 
 

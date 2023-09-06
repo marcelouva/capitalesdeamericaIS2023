@@ -3,13 +3,13 @@ class Question < ActiveRecord::Base
   has_one :option
   has_many :question_options
   has_many :options, :through => :question_options
-  validate :validate_options_count
+  #validate :validate_options_count
 
-  private
+  #private
 
-  def validate_options_count
-    unless options.size == 3
-      errors.add(:base, "Una pregunta debe tener exactamente 2   opciones.")
-    end
-  end
+  #def validate_options_count
+  #  unless options.size == 3
+  #    errors.add(:base, "Una pregunta debe tener exactamente 2   opciones.")
+  #  end
+  #end
 end
